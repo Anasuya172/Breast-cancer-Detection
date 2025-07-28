@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>BREAST CANCER</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="text-align: center">BREAST CANCER PREDICTION MODEL</h1>
+      <img style="width: 100%; height: 550px;" src="{{ url_for('static', filename='image.png') }}" alt="">
+      
+      <form action="/predict" method="POST">
+        <div class="mb-3">
+          <label class="form-label">Input All Medical Breast Cancer Features</label>
+          <input type="text" name="feature" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      {% for i in message %}
+        {% if i == "cancerous" %}
+          <div class="card mt-3" style="width: 18rem;">
+            <img src="{{ url_for('static', filename='image2.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Cancerious</h5>
+              <p class="card-text">This case is predicted to be cancerous. Please consult a medical professional.</p>
+         
+            </div>
+          </div>
+        {% else %}
+          <div class="card mt-3" style="width: 18rem;">
+            <img src="{{ url_for('static', filename='image1.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Not Cancerious</h5>
+              <p class="card-text">This case is predicted to be non-cancerous. Stay healthy!</p>
+         
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
