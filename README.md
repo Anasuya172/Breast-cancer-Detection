@@ -51,3 +51,25 @@ def predict():
     pred = model.predict(np_features.reshape(1, -1))
     output = ["Cancerous" if pred[0] == 1 else "Not Cancerous"]
     return render_template("index.html", message=output)
+
+Files
+app.py – Flask server logic
+
+templates/index.html – Input form and result display
+
+model.pkl – Pre-trained model file
+
+static/ –  images
+
+🛠️ Setup
+git clone https://github.com/your-username/Breast-cancer-Detection.git
+cd Breast-cancer-Detection
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+pip install -r requirements.txt
+python app.py
+
+📃 License
+This project is for educational use only.
+
+
